@@ -35,13 +35,12 @@
                         <td>{{ $lending->total }}</td>
                         <td>{{ $lending->borrower_name }}</td>
                         <td>{{ $lending->reason }}</td>
-                        <td>{{ $lending->date }}</td>
+                        <td>{{ date('d M Y', strtotime($lending->date)) }}</td>
                         <td>
                             @if ($lending->returned_at)
-                                <span
-                                    class="badge bg-success">{{ \Carbon\Carbon::parse($lending->returned_at)->format('Y-m-d H:i') }}</span>
+                                <p>{{ date('d M Y', strtotime($lending->returned_at)) }}</p>
                             @else
-                                <span class="badge bg-warning text-dark">Not Returned</span>
+                                <p class="text-danger mb-0">Not Returned</p>
                             @endif
                         </td>
                         <td>{{ $lending->user->name ?? '-' }}</td>
