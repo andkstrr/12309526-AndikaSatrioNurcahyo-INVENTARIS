@@ -80,8 +80,19 @@ Route::middleware(['isStaff'])->group(function () {
     Route::prefix('staff')->name('staff.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'staff_dashboard'])->name('dashboard');
 
+        // ITEMS
         Route::prefix('items')->name('items.')->group(function () {
             Route::get('/', [ItemController::class, 'index_staff'])->name('index');
+        });
+
+        // LENDINGS
+        Route::prefix('lendings')->name('lendings.')->group(function () {
+            Route::get('/', [LendingController::class, 'index'])->name('index');
+            Route::get('/create', [LendingController::class, 'create'])->name('create');
+            Route::post('/store', [LendingController::class, 'store'])->name('store');
+            Route::patch('/update/{lending}', [LendingController::class, 'update'])->name('update');
+            Route::delete('/delete/{lending}', [LendingController::class, 'destroy'])->name('destroy');
+            Route::get('/export', [LendingController::class, 'export'])->name('export');
         });
     });
 });

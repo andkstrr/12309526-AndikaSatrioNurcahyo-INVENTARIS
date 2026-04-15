@@ -31,8 +31,8 @@
                 </a>
             </li>
             <li class="nav-item ms-3">
-                <a class="nav-link d-flex align-items-center gap-2 px-4"
-                    href="">
+                <a class="nav-link d-flex align-items-center gap-2 px-4 {{ request()->routeIs('staff.lendings.*') ? 'active text-dark-blue' : 'text-gray' }}"
+                    href="{{ route('staff.lendings.index') }}">
                     <i class="bi bi-tags"></i>
                     Lending
                 </a>
