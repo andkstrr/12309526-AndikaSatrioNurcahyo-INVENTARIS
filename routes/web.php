@@ -55,7 +55,7 @@ Route::middleware(['isAdmin'])->group(function () {
             Route::get('/export', [ItemController::class, 'export'])->name('export');
         });
 
-        // // ACCOUNTS
+        // ACCOUNTS
         Route::prefix('accounts')->name('accounts.')->group(function () {
             Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/', [AccountController::class, 'index_admin'])->name('index');
@@ -79,5 +79,9 @@ Route::middleware(['isAdmin'])->group(function () {
 Route::middleware(['isStaff'])->group(function () {
     Route::prefix('staff')->name('staff.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'staff_dashboard'])->name('dashboard');
+
+        Route::prefix('items')->name('items.')->group(function () {
+            Route::get('/', [ItemController::class, 'index_staff'])->name('index');
+        });
     });
 });

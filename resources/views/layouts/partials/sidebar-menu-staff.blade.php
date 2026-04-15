@@ -24,8 +24,8 @@
         </div>
         <ul class="nav flex-column mb-3">
             <li class="nav-item ms-3 mb-3">
-                <a class="nav-link d-flex align-items-center gap-2 px-4"
-                    href="">
+                <a class="nav-link d-flex align-items-center gap-2 px-4 {{ request()->routeIs('staff.items.*') ? 'active text-dark-blue' : 'text-gray' }}"
+                    href="{{ route('staff.items.index') }}">
                     <i class="bi bi-box-seam"></i>
                     Items
                 </a>

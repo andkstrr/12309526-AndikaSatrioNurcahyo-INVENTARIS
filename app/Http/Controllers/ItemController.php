@@ -21,6 +21,13 @@ class ItemController extends Controller
         return view('pages.admin.items.index', compact('items'));
     }
 
+    public function index_staff()
+    {
+        $items = Item::with('category')->get();
+
+        return view('pages.staff.items.index', compact('items'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
