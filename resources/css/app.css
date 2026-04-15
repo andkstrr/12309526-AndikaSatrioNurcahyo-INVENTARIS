@@ -1,0 +1,34 @@
+@import "fastbootstrap/dist/css/fastbootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+* {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+#footer {
+    background-color: #023a8f;
+}
+
+.bg-dark-blue {
+    background-color: #023a8f;
+}
+
+.bg-dark-blue:hover {
+    background-color: #012c64;
+}
+
+.text-dark-blue {
+    color: #023a8f;
+}
+
+.text-gray {
+    color: #bdbdbd;
+}
+
+.text-grey {
+    color: #adadad;
+}
+
+.text-white-hover:hover {
+    color: #ffffff !important;
+}
