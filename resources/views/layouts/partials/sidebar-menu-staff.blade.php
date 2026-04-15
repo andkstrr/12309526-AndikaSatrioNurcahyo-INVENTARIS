@@ -43,13 +43,13 @@
     {{-- ACCOUNTS --}}
     <div class="mb-6">
         <div class="px-4 mb-3">
-            <small class="text-muted fw-semibold text-uppercase fs-xs ls-wide">Accounts</small>
+            <small class="text-muted fw-semibold text-uppercase fs-xs ls-wide">Account</small>
         </div>
-                <ul class="nav flex-column mb-3">
+        <ul class="nav flex-column mb-3">
             <li class="nav-item ms-3">
-                <a class="nav-link d-flex align-items-center gap-2 px-4"
-                    href="">
-                    <i class="bi bi-user"></i>
+                <a class="nav-link d-flex align-items-center gap-2 px-4 {{ request()->routeIs('staff.accounts.edit') ? 'actve text-dark-blue' : 'text-gray' }}"
+                    href="{{ route('staff.accounts.edit', Auth::user()->id) }}">
+                    <i class="bi bi-person"></i>
                     User
                 </a>
             </li>

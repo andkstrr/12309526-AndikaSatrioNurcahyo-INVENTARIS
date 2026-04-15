@@ -94,5 +94,11 @@ Route::middleware(['isStaff'])->group(function () {
             Route::delete('/delete/{lending}', [LendingController::class, 'destroy'])->name('destroy');
             Route::get('/export', [LendingController::class, 'export'])->name('export');
         });
+
+        // ACCOUNTS
+        Route::prefix('accounts')->name('accounts.')->group(function () {
+            Route::get('/edit/{user}', [AccountController::class, 'edit_staff'])->name('edit');
+            Route::put('/update/{user}', [AccountController::class, 'update_staff'])->name('update');
+        });
     });
 });

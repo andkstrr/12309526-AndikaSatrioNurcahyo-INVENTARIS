@@ -61,6 +61,13 @@ class AccountController extends Controller
         return view('pages.admin.accounts.admin.edit', compact('account'));
     }
 
+    public function edit_staff(Request $request, User $user)
+    {
+        $account = User::findOrFail($user->id);
+
+        return view('pages.staff.users.index', compact('account'));
+    }
+
     public function update(Request $request, User $user)
     {
         $validated = $request->validate([
@@ -79,6 +86,25 @@ class AccountController extends Controller
         $user->update($validated);
 
         return redirect()->route('admin.accounts.admin.index')->with('success', 'Account updated successfully.');
+    }
+
+    public function update_staff(Request $request, User $user)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:4',
+        ]);
+
+        if (!empty($validated['password'])) {
+            $validated['password'] = Hash::make($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+
+        $user->update($validated);
+
+        return redirect()->route('staff.accounts.edit', $user->id)->with('success', 'Account updated successfully.');
     }
 
     public function destroy(User $user)
