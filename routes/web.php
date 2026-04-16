@@ -70,6 +70,7 @@ Route::middleware(['isAdmin'])->group(function () {
             Route::prefix('staff')->name('staff.')->group(function () {
                 Route::get('/', [AccountController::class, 'index_staff'])->name('index');
                 Route::put('/reset-password/{user}', [AccountController::class, 'reset_password'])->name('reset_password');
+                Route::get('/export', [AccountController::class, 'export'])->name('export');
             });
         });
     });

@@ -111,4 +111,9 @@ class ItemController extends Controller
     {
         //
     }
+
+    public function export()
+    {
+        return Excel::download(new ItemsExport, 'items.xlsx');
+    }
 }

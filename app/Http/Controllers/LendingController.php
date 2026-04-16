@@ -110,4 +110,9 @@ class LendingController extends Controller
 
         return redirect()->route('staff.lendings.index')->with('success', 'Lending data deleted successfully.');
     }
+
+    public function export()
+    {
+        return Excel::download(new LendingsExport, 'lendings.xlsx');
+    }
 }

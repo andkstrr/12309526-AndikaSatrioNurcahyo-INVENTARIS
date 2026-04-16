@@ -8,7 +8,7 @@
         <p class="fs-6 mb-0">Manage and organize your staff accounts.</p>
         <div class="d-flex flex-row gap-2">
             <div class="px-4 py-2 bg-success rounded-3">
-                <a href="#" class="text-white fs-sm">Export to Excel</a>
+                <a href="{{ route('admin.accounts.staff.export') }}" class="text-white fs-sm">Export to Excel</a>
             </div>
             <div class="px-4 py-2 bg-dark-blue rounded-3">
                 <a href="{{ route('admin.accounts.admin.create') }}" class="text-white fs-sm">+ Add Account</a>

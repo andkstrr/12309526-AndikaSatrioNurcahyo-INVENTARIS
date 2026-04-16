@@ -125,4 +125,9 @@ class AccountController extends Controller
 
         return redirect()->route('admin.accounts.staff.index')->with('success', 'Password reset successfully. New Password: ' . $plainPassword);
     }
+
+    public function export()
+    {
+        return Excel::download(new AccountsExport, 'accounts.xlsx');
+    }
 }
