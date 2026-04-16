@@ -14,7 +14,8 @@ class Lending extends Model
         'borrower_name',
         'reason',
         'total',
-        'user_id',
+        'handled_by',
+        'returned_by',
         'date',
         'returned_at',
     ];
@@ -24,8 +25,18 @@ class Lending extends Model
         return $this->belongsTo(Item::class);
     }
 
+    public function handledBy()
+    {
+        return $this->belongsTo(User::class, 'handled_by');
+    }
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->handledBy();
+    }
+
+    public function returnedBy()
+    {
+        return $this->belongsTo(User::class, 'returned_by');
     }
 }

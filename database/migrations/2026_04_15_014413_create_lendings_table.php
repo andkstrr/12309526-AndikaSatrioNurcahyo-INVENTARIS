@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('reason');
             $table->integer('total');
             $table->date('date');
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('handled_by')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('returned_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamp('returned_at')->nullable();
             $table->timestamps();
         });

@@ -61,7 +61,12 @@
                                 <span class="text-danger">Not returned</span>
                             @endif
                         </td>
-                        <td>{{ $lending->user->name }}</td>
+                        <td>
+                            <div>{{ $lending->handledBy->name ?? '-' }}</div>
+                            @if ($lending->returnedBy)
+                                <div class="small">Returned by: {{ $lending->returnedBy->name }}</div>
+                            @endif
+                        </td>
                         <td>
                             <div class="d-flex gap-1">
                                 @if (!$lending->returned_at)

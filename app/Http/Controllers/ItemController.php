@@ -97,12 +97,9 @@ class ItemController extends Controller
         return redirect()->route('admin.items.index')->with('success', 'Item updated successfully.');
     }
 
-    /**
-     * Display lending data for a specific item.
-     */
     public function lending(Item $item)
     {
-        $lendings = Lending::with('user')->where('item_id', $item->id)->get();
+        $lendings = Lending::with('handledBy', 'returnedBy')->where('item_id', $item->id)->get();
 
         return view('pages.admin.items.lending', compact('item', 'lendings'));
     }

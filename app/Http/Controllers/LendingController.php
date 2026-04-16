@@ -15,7 +15,7 @@ class LendingController extends Controller
      */
     public function index()
     {
-        $lendings = Lending::with('item', 'user')->get();
+        $lendings = Lending::with('item', 'handledBy', 'returnedBy')->get();
 
         return view('pages.staff.lendings.index', compact('lendings'));
     }
@@ -60,7 +60,7 @@ class LendingController extends Controller
                 'item_id' => $entry['item_id'],
                 'total' => $entry['total'],
                 'reason' => $validated['reason'],
-                'user_id' => auth()->id(),
+                'handled_by' => auth()->id(),
                 'date' => now()->format('Y-m-d'),
             ]);
         }
@@ -89,9 +89,13 @@ class LendingController extends Controller
      */
     public function update(Request $request, Lending $lending)
     {
+        if ($lending->returned_at) {
+            return redirect()->back()->with('error', 'Item has already been returned.');
+        }
+
         $lending->update([
             'returned_at' => now(),
-            'user_id' => auth()->id(),
+            'returned_by' => auth()->id(),
         ]);
 
         return redirect()->back()->with('success', 'Item returned successfully.');

@@ -43,7 +43,12 @@
                                 <p class="text-danger mb-0">Not Returned</p>
                             @endif
                         </td>
-                        <td>{{ $lending->user->name ?? '-' }}</td>
+                        <td>
+                            <div>{{ $lending->handledBy->name ?? '-' }}</div>
+                            @if ($lending->returnedBy)
+                                <div class="text-muted small">Returned by: {{ $lending->returnedBy->name }}</div>
+                            @endif
+                        </td>
                     </tr>
                 @empty
                     <tr>
